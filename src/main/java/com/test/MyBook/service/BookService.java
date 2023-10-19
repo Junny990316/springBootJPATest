@@ -52,6 +52,12 @@ public class BookService {
         return modelMapper.map(existBook, BookResDto.class);
     }
 
+    public void updateBookForm(BookReqDto bookReqDto) {
+        BookEntity existBook = bookRepository.findById(bookReqDto.getId())
+                .orElseThrow(() -> new BusinessException(bookReqDto.getId()+ "book not found", HttpStatus.NOT_FOUND)) ;
+        existBook.setTitle(bookReqDto.getTitle());
+    }
+
     public void deleteBook(Long id) {
         BookEntity book = bookRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("book not found", HttpStatus.NOT_FOUND));

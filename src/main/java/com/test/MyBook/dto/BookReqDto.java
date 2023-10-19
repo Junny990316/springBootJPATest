@@ -11,6 +11,7 @@ import lombok.*;
 @ToString //toString
 @Builder
 public class BookReqDto {
+    private Long id;
     @NotEmpty(message = "title은 필수 입력항목입니다.")
     private String title;
     @NotEmpty(message = "필수 입력항목입니다.")
